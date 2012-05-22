@@ -1,0 +1,149 @@
+ {
+    "type" : "div",
+	 "id" : "my-div",
+								     
+    "elements" :
+    [
+        {   "type" : "div",
+			"class" : "ui-widget-content ui-corner-all",
+			 "style" : "padding: 10px",
+            "elements" :
+            [
+                {
+                    "name" : "email",
+                    "caption" : "Email address",
+                    "type" : "text",
+                    "placeholder" : "E.g. user@example.com",
+                    "validate" :
+                    {
+                    "email" : true
+                    }
+                },
+                {
+                    "name" : "password",
+                    "caption" : "Password",
+                    "type" : "password",
+                    "id" : "registration-password",
+                    "validate" :
+                    {
+                        "required" : true,
+                        "minlength" : 5,
+                        "messages" :
+                        {
+                            "required" : "Please enter a password",
+                            "minlength" : "At least {0} characters long"
+                        }
+                    }
+                },
+                {
+                    "name" : "password-repeat",
+                    "caption" : "Repeat password",
+                    "type" : "password",
+                    "validate" :
+                    {
+                        "equalTo" : "#registration-password",
+                        "messages" :
+                        {
+                            "equalTo" : "Please repeat your password"
+                        }
+                    }
+                },
+                {
+                    "type" : "radiobuttons",
+                    "caption" : "Sex",
+                    "name" : "sex",
+                    "class" : "labellist",
+                    "options" :
+                    {
+                        "f" : "Female",
+                        "m" : "Male"
+                    }
+                },
+                {
+                    "type" : "checkboxes",
+                    "name" : "test",
+                    "caption" : "Receive newsletter about",
+                    "class" : "labellist",
+                    "options" :
+                    {
+                        "updates" : "Product updates",
+                        "errors" :
+                        {
+                        "value" : "security",
+                        "caption" : "Security warnings",
+                        "checked" : "checked"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "type" : "div",
+			"class" : "ui-widget-content ui-corner-all",
+			 "style" : "padding: 10px",
+            "elements" :
+            [
+                {
+                    "name" : "12",
+                    "caption" : "Your name",
+                    "type" : "text",
+                    "placeholder" : "E.g. John Doe"
+                },
+                 {
+                    "name" : "12",
+                    "caption" : "Your name",
+                    "type" : "text",
+                    "placeholder" : "E.g. Jorrrrrrrhn Doe"
+                },
+                {
+     "type" : "checkbox",
+     "name" : "checkboxselection",
+     "caption" : "Chrrrrrrrrrrrrrrrrrrrreckbox"
+},
+                {
+                    "name" : "13",
+                    "caption" : "Address",
+                    "type" : "text",
+                    "validate" : { "required" : true }
+                },
+                {
+                    "name" : "zip",
+                    "caption" : "ZIP code",
+                    "type" : "text",
+                    "size" : 5,
+                    "validate" : { "required" : true }
+                },
+                {
+                    "name" : "city",
+                    "caption" : "City",
+                    "type" : "text",
+                    "validate" : { "required" : true }
+                },
+                {
+                    "type" : "select",
+                    "name" : "1234",
+                    "caption" : "Choose a continent",
+                    "options" :
+                    {
+                        "1" : "America",
+                        "2" :
+                        {
+                            "selected" : "true",
+                            "id" : "europe-option",
+                            "caption" : "europe",
+                            "value" : "222",
+                            "html" : "Europe"
+                        },
+                        "3" : "Asia",
+                        "4" : "Africa",
+                        "5" : "Australia"
+                    }
+                }
+            ]
+        },
+        {
+            "type" : "submit",
+            "value" : "Signup"
+        }
+    ]
+}

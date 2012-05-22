@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+	<!-- See http://wiki.openmrs.org/display/docs/Module+liquibase+File for 
+		documentation on this file. See http://www.liquibase.org/manual/home#available_database_refactorings 
+		for a list of supported elements and attributes -->
+
+
+	<changeSet id="jsonforms-2012-01-31-5:0021" author="nbore_jsonforms">
+		<preConditions onFail="MARK_RAN">
+			<not>
+				<tableExists tableName="jsonforms" />
+			</not>
+		</preConditions>
+		<comment>
+			Creating the jsonforms table
+		</comment>
+
+		<createTable tableName="jsonforms">
+
+			<column name="jsonforms_id" type="int(11)">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			
+			<column name="name" type="char(38)">
+				<constraints nullable="false" />
+			</column>
+			<column name="version" type="char(38)">
+				<constraints nullable="false" />
+			</column>
+			<column name="validname" type="char(38)">
+				<constraints nullable="false" />
+			</column>
+			<column name="jsondata" type="mediumtext">
+				<constraints nullable="false" />
+			</column>
+			
+			<column name="creator" type="int(11)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="datecreated" type="datetime">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="voided" type="smallint(6)" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+
+			<column name="voided_by" type="int(11)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="date_voided" type="datetime">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="void_reason" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
+
+			<column name="uuid" type="char(38)">
+				<constraints nullable="false" />
+			</column>
+
+
+		</createTable>
+		<createIndex tableName="jsonforms" indexName="uuid">
+			<column name="uuid" />
+		</createIndex>
+	</changeSet>
+
+	<changeSet id="jsonforms-2012-01-31-5:012" author="nbore_jsonforms">
+		<addAutoIncrement tableName="jsonforms"
+			columnName="jsonforms_id" columnDataType="int" />
+	</changeSet>
+
+	<!-- uuid functions -->
+
+
+	<changeSet id="jsonforms-2012-01-31-5:324" author="nbore_jsonforms">
+		<preConditions onFail="MARK_RAN">
+			
+			<dbms type="mysql" />
+				
+		</preConditions>
+		<comment>Generating UUID row in pharmacy_dose table via built in uuid function.</comment>
+		<update tableName="jsonforms">
+			<column name="uuid" valueNumeric="name-of-uuid-function" />
+			<where>uuid is null</where>
+		</update>
+		<modifySql dbms="mysql">
+			<replace replace="name-of-uuid-function" with="UUID()" />
+		</modifySql>
+		
+	</changeSet>
+	
+	
+</databaseChangeLog>

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="org.openmrs.module.jsonforms.model.JsonForms"
+		table="jsonforms">
+		<cache usage="read-write" />
+
+		<id name="id" type="int" column="jsonforms_id" unsaved-value="0">
+			<generator
+				class="org.openmrs.api.db.hibernate.NativeIfNotAssignedIdentityGenerator" />
+		</id>
+		<discriminator column="jsonforms_id" insert="false" />
+
+		<property name="name" type="java.lang.String" column="name"
+			length="255" />
+
+		
+		<property name="version" type="java.lang.String" column="version"
+			not-null="true" />
+			<property name="valid" type="java.lang.String" column="validname"
+			not-null="true" />
+			<property name="data" type="java.lang.String" column="jsondata"
+			not-null="true" />
+			
+			
+			
+			<many-to-one name="creator" class="org.openmrs.User"
+			column="creator" not-null="true" />
+
+
+		<property name="voided" type="boolean" not-null="true" />
+
+
+		<many-to-one name="voidedBy" class="org.openmrs.User"
+			column="voided_by" />
+
+		<property name="dateVoided" type="java.util.Date" column="date_voided" />
+		<property name="voidReason" type="java.lang.String" column="void_reason"
+			length="255" />
+
+		<property name="uuid" type="string" length="38" not-null="true"
+			unique="true" />
+
+	</class>
+</hibernate-mapping>
